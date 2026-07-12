@@ -9,6 +9,9 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty]
     public partial PerformanceMode SelectedMode { get; set; } = PerformanceMode.Balanced;
 
+    public IEnumerable<PerformanceMode> AvailableModes { get; } = 
+        Enum.GetValues<PerformanceMode>();
+
     [RelayCommand]
     private void SelectMode(PerformanceMode mode)
     {

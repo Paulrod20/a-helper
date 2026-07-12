@@ -21,6 +21,6 @@ public class EnumToBooleanConverter : IValueConverter
 
     public object ConvertBack(object? value, Type targetType, object? parameter, CultureInfo culture)
     {
-        return (value is true) ? Enum.Parse(targetType, parameter?.ToString() ?? string.Empty) : Binding.DoNothing;
+        return (value is true) ? Enum.Parse(targetType, parameter?.ToString() ?? string.Empty) : System.Windows.Data.Binding.DoNothing;
     }
 }
