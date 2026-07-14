@@ -2,7 +2,7 @@
 
 ## What this project is
 
-A-Helper is a native Windows 11 desktop app (WPF, C#, .NET 10) that replaces Alienware
+A-Helper is a native Windows 11 desktop app (WinForms, C#, .NET 10) that replaces Alienware
 Command Center. It reads and controls hardware settings on an Alienware x16 R1
 (performance modes, fan speeds/curves, GPU switching, RGB/AlienFX) via WMI.
 
@@ -13,9 +13,9 @@ clean sectioned UI with card-style selectable buttons.
 
 ## Tech stack
 
-- .NET 10, WPF (`net10.0-windows`)
-- WPF-UI 4.3.0 — Fluent Design controls, dark theme, Mica backdrop, built-in Fluent icons
-- MVVM architecture (no code-behind logic beyond wiring — see structure below)
+- .NET 10, WinForms (`net10.0-windows`)
+- `System.Management` for Alienware WMI communication
+- Compact, DPI-aware tray-popup UI inspired by G-Helper
 
 ## Project structure (do not restructure without asking)
 
@@ -24,10 +24,9 @@ src/AHelper/
 ├── Models/       Plain data classes only. No logic, no UI references.
 ├── Services/     Hardware communication (WMI calls, system reads/writes).
 │                 One class per hardware domain (e.g. FanService, PowerModeService).
-├── ViewModels/   Binds Models to Views. Holds observable state + commands.
-│                 Never references XAML/UI types directly.
-├── Views/        XAML windows/pages + minimal code-behind (wiring only).
-└── Themes/       Resource dictionaries — colors, fonts, control styles.
+└── UI/
+    ├── Forms/    WinForms windows and their presentation/event wiring.
+    └── Controls/ Reusable custom controls as the UI grows.
 ```
 
 ## Coding conventions
@@ -60,11 +59,11 @@ Avoid:
 ## Testing
 
 - Unit tests belong in a sibling `tests/AHelper.Tests/` project (xUnit).
-- ViewModels and Services should be designed to be testable in isolation
+- Services should be designed to be testable in isolation
   (constructor-inject dependencies, avoid static hardware calls where possible).
 
 ## Current status
 
-Early development. Working: dark-themed FluentWindow shell with custom title bar.
-Next: card-style selectable button group (mirrors G-Helper's mode-selection UI),
-then WMI research for Alienware performance mode + fan control equivalents.
+Early development. Working: dark WinForms tray-popup shell with card-style placeholder
+mode selection and persisted UI preferences. Next: a read-only Alienware thermal query
+service that enumerates supported profiles, fans, sensors, and current readings.
