@@ -1,4 +1,4 @@
-# A-Helper — Project Conventions for Codex
+# A-Helper — Project Development Guidelines
 
 ## What this project is
 
@@ -11,11 +11,10 @@ clean, single-purpose utility for Asus laptops. We are NOT copying their code;
 we are following the UX philosophy: lightweight, fast, no bloat, and a clean
 sectioned UI with card-style selectable buttons.
 
-Local implementation template: `C:\Users\Pauly\Developer\p-helper\PredatorHelper`.
-Use PredatorHelper as the practical reference for WinForms structure, popup layout,
-tray lifecycle, settings persistence, telemetry timing, and interaction flow. Adapt
-those patterns for Alienware; never carry over Acer WMI classes, command values,
-sensor IDs, profile IDs, or fan-control assumptions.
+The earlier PredatorHelper prototype is the practical implementation reference for
+WinForms structure, popup layout, tray lifecycle, settings persistence, telemetry
+timing, and interaction flow. Adapt those patterns for Alienware; never carry over
+Acer WMI classes, command values, sensor IDs, profile IDs, or fan-control assumptions.
 
 ## Tech stack
 
@@ -47,18 +46,18 @@ src/AHelper/
 - Naming: PascalCase for classes/methods/properties, camelCase for locals/params,
   `_camelCase` for private fields.
 
-## How Codex should help on this project
+## Development approach
 
-Good uses:
+Current priorities:
 - Researching WMI namespaces/classes/methods for Alienware hardware control
   (equivalents to Asus's `AcerGamingFunction`-style WMI interfaces)
 - Refactoring existing code for clarity once logic is working
-- Error handling and edge cases once a feature's core logic is understood by Paul
+- Error handling and edge cases once a feature's core logic is understood and validated
 - Investigating community projects/forums for reverse-engineered Alienware WMI docs
 
-Avoid:
-- Writing entire features end-to-end unprompted — Paul is learning WPF/MVVM deeply
-  and wants to understand every piece, not receive finished code to paste in.
+Working principles:
+- Build features incrementally so each WinForms and WMI component is understood and
+  verified before expanding it.
 - Silently restructuring the folder/architecture above.
 - Introducing new NuGet dependencies without flagging them first.
 
