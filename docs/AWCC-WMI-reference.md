@@ -1,6 +1,6 @@
 # AWCCWmiMethodFunction — Reverse-Engineering Reference
 
-Research date: 2026-07-11. Target: Alienware x16 R1, Windows 11, WPF/.NET 10.
+Research date: 2026-07-11. Target: Alienware x16 R1, Windows 11, WinForms/.NET 10.
 Method: 5-angle web research, 20 source-claim extractions, 75 adversarial verification votes
 (58 upheld / 17 refuted).
 
