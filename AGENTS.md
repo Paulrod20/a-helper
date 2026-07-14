@@ -7,9 +7,15 @@ Command Center. It reads and controls hardware settings on an Alienware x16 R1
 (performance modes, fan speeds/curves, GPU switching, RGB/AlienFX) via WMI.
 
 Primary design inspiration: G-Helper (github.com/seerge/g-helper) — a lightweight,
-clean, single-purpose utility for Asus laptops. We are NOT copying their code
-(they're WinForms; we're WPF) — only the UX philosophy: lightweight, fast, no bloat,
-clean sectioned UI with card-style selectable buttons.
+clean, single-purpose utility for Asus laptops. We are NOT copying their code;
+we are following the UX philosophy: lightweight, fast, no bloat, and a clean
+sectioned UI with card-style selectable buttons.
+
+Local implementation template: `C:\Users\Pauly\Developer\p-helper\PredatorHelper`.
+Use PredatorHelper as the practical reference for WinForms structure, popup layout,
+tray lifecycle, settings persistence, telemetry timing, and interaction flow. Adapt
+those patterns for Alienware; never carry over Acer WMI classes, command values,
+sensor IDs, profile IDs, or fan-control assumptions.
 
 ## Tech stack
 
